@@ -1,0 +1,66 @@
+.nav-bar {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgba(43, 43, 43);
+    color: rgb(255, 217, 0);
+    height: 70px;
+}
+
+.nav-title {
+    text-decoration: none;
+    color: rgb(255, 217, 0);
+}
+
+h1{
+    margin-left: 30px;
+    font-weight: lighter;
+    font-size: 30px;
+    cursor: pointer;
+}
+
+.nav-button {
+    display: flex;
+    flex-direction: row;
+}
+
+.sign-out {
+    background-color: rgb(255, 217, 0);
+    height: 30px;
+    width: 90px;
+    margin-right: 20px;
+    border: none;
+    outline: none;
+    border-radius: 10px;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.4s;
+}
+
+.sign-out:hover {
+    background: none;
+    color: rgb(255, 217, 0);
+    border: 2px solid rgb(255, 217, 0);
+}
+
+.profile {
+    background-color: rgb(10, 252, 232);
+    height: 30px;
+    width: 90px;
+    margin-right: 20px;
+    border: none;
+    outline: none;
+    border-radius: 10px;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.4s;
+}
+
+.profile:hover {
+    background: none;
+    color: rgb(10, 252, 232);
+    border: 2px solid rgb(10, 252, 232);
+}

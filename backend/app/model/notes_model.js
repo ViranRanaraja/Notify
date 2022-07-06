@@ -2,14 +2,24 @@ var mongoose = require ('mongoose');
 var Schema = mongoose.Schema;
 
 var NoteSchema = new Schema({
-    content: {
+    title: {
         type: String,
-        trim: true
+        required: true
     },
 
-    owner: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'User'
+    content: {
+        type: String,
+        required: true
+    },
+
+    date: {
+        type: Date,
+        default: Date.now
+    },
+
+    user_id: {
+        type: String,
+        required: true
     }
 },
 {
@@ -17,4 +27,4 @@ var NoteSchema = new Schema({
     toJSON: {virtuals: true},
 });
 
-module.exports = mongoose.model('note', NoteSchema)
+module.exports = mongoose.model('Notes', NoteSchema)

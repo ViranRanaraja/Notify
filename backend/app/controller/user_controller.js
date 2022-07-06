@@ -41,15 +41,11 @@ exports.createUser = (req, res) => {
 }
 
 exports.adminLogin = (req,res) => {
-    const firstName = req.body.firstName;
-    const lastName = req.body.lastName;
     const email = req.body.email;
     const password = req.body.password;
     const accountType = req.body.accountType;
 
     var condition = {
-        firstName: firstName,
-        lastName: lastName,
         email: email,
         password: password,
         accountType: accountType,
@@ -59,7 +55,7 @@ exports.adminLogin = (req,res) => {
             if (accountType == "Admin"){
                 if (data.length == 0){
                     res.status(404).send({
-                        message: "User not found."
+                        message: "User not found in Database."
                     });
                 }
                 else{
@@ -83,15 +79,11 @@ exports.adminLogin = (req,res) => {
 };
 
 exports.studentLogin = (req,res) => {
-    const firstName = req.body.firstName;
-    const lastName = req.body.lastName;
     const email = req.body.email;
     const password = req.body.password;
     const accountType = req.body.accountType;
 
     var condition = {
-        firstName: firstName,
-        lastName: lastName,
         email: email,
         password: password,
         accountType: accountType,
@@ -102,7 +94,7 @@ exports.studentLogin = (req,res) => {
             if (accountType == "Student"){
                 if (data.length == 0){
                     res.status(404).send({
-                        message: "User not found."
+                        message: "User not found in Database."
                     });
                 }
                 else{

@@ -1,14 +1,19 @@
 const express = require("express");
-const cors = require("cors");
+const cors = require("cors")
 const bodyParser = require("body-parser");
 
 const app = express();
+var corsOptions = {
+  origin: "*"
+};
 
 app.use(bodyParser.urlencoded({
      extended: false
     }));
 
 app.use(bodyParser.json());
+
+app.use(cors(corsOptions));
 
 //when localhost:8080 is open this message can be seen
 app.get('/', (req, res) => {
