@@ -10,6 +10,7 @@ exports.createUser = (req, res) => {
         email: req.body.email,
         password: req.body.password,
         accountType: req.body.accountType,
+        loginattempts: 0,
     });
 
     user
@@ -59,9 +60,10 @@ exports.adminLogin = (req,res) => {
                     });
                 }
                 else{
-                    res.send({
-                        message: "Admin: Successfully logged in."
-                    })
+                    // res.send({
+                    //     message: "Admin: Successfully logged in."
+                    // })
+                    res.send(data);
                 }  
             }
             else{
@@ -87,7 +89,6 @@ exports.studentLogin = (req,res) => {
         email: email,
         password: password,
         accountType: accountType,
-        
     };
     User.find(condition)
         .then(data => {
@@ -98,9 +99,10 @@ exports.studentLogin = (req,res) => {
                     });
                 }
                 else{
-                    res.send({
-                        message: "Student: Successfully logged in."
-                    })
+                    // res.send({
+                    //     message: "Student: Successfully logged in."
+                    // })
+                    res.send(data);
                 }  
             }
             else{
@@ -115,6 +117,29 @@ exports.studentLogin = (req,res) => {
                 message: err.message || "Error ocurred while logging in. Try Again Later!"
             });
         });
+};
+
+exports.updateAttempts = (req, res) => {
+    const id = req.query.id;
+
+    User.findByIdAndUpdate(id, req.body, {
+        useFindAndModify: false
+    })
+
+    .then(data => {
+        if (!data) {
+            res.status(404).send({
+                message: "Incorrect User Details."
+            });
+        } else res.send({
+            message: "User Details Updated."
+        });
+    })
+    .catch(err => {
+        res.status(500).send({
+            message: "Error updating User with id=" + id + ". Try Again Later!"
+        });
+    });
 };
 
 exports.editUser = (req, res) => {
@@ -159,5 +184,21 @@ exports.deleteUser = (req, res) => {
             res.status(500).send({
                 message: "Could not delete User with id=" + id + ". Try Again Later!"
             });
+        });
+};
+
+//not working
+exports.logout = (req,res) => {
+    User
+        .save(req.user)
+
+        .then(date =>{
+            res.send({
+                message: "Successully Logged Out."
+            })
+        })
+        
+        .catch(err =>{
+            res.status(500).send("An Error has occurred while logging out.")
         });
 };

@@ -1,12 +1,8 @@
 .Home {
-    background-color: rgb(78, 78, 78);
     min-height: 60vh;
     color: rgb(255, 217, 0);
-    /* color: rgb(96, 197, 255); */
-    padding: 150px 300px;
+    padding: 30px 120px;
     padding-bottom: 154px;
-    /* animation: fadeIn 1s forwards;
-    animation-delay: 1s; */
 }
 
 .HomeNotes {
@@ -19,15 +15,16 @@
 }
 
 .NoNotesFound {
-    font-size: 2vh;
-    padding-top: 5vh;
+    font-size: 2.5vh;
+    padding-top: 1vh;
+    padding-left: 40px;
     font-weight: 100;
     color: rgb(192, 200, 207);
 }
 
 .Note {
-    padding: 70px 0px;
-    padding-left: 40px;
+    padding: 80px 0px;
+    padding-left: 30px;
     font-size: 20px;
     border-radius: 8px;
     display: flex;
@@ -39,7 +36,7 @@
 }
 
 .DelIcon {
-    color: rgba(43, 43, 43);
+    color: rgb(255, 26, 26);
     padding: 0;
     margin-right: 40px;
     cursor: pointer;
@@ -58,11 +55,9 @@
 
 .AddBtn {
     background-color: rgb(255, 217, 0);
-    /* background-color: rgb(96, 197, 255); */
     height: 50px;
     width: 50px;
     display: flex;
-    padding-bottom: 5px;
     align-items: center;
     justify-content: center;
     border: none;
@@ -72,15 +67,13 @@
     cursor: pointer;
     transition: all 0.4s;
     position: fixed;
-    right: 35px;
-    bottom: 130px;
+    right: 95px;
+    bottom: 90px;
 }
 
 .AddBtn:hover {
     background: none;
     color: rgb(255, 217, 0);
-    /* color: rgb(96, 197, 255); */
     border: 3px solid rgb(255, 217, 0);
-    /* border: 2px solid rgb(96, 197, 255); */
     box-shadow: 1px 1px 20px rgb(32, 32, 32);
 }

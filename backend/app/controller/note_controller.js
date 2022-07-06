@@ -3,57 +3,46 @@ const Note = require("../model/notes_model");
 exports.createNote = (req, res) => {
 
     //Creating Note
-    try{
-        const {title, content, date} = req.body;
-        var note = new Note({
-            title, 
-            content, 
-            date, 
-            user_id: req.user.id
-        });
-        res.send({
-            message: "User Id" + user_id + "."
+    var note = new Note({
+        title: req.body.title, 
+        content: req.body.content
+    });
+    note
+        .save(note)
+        .then(data =>{
+            res.send(data);
+            res.send("Note Saved");
         })
-    }
-    catch(err){
-        res.status(500).send({
-            message: err.message || "Error occured while saving the note. Try Again Later!"
-        });
-    }
-};
-
-exports.getNote = (res, req) => {
-
-    try{
-        req.user.populate("notes");
-
-        res.send(req.user.notes);
-    }
-    catch(err) {
-        res.status(500).send({
-            message: err.message || "Error occured while retrieving the note. Try Again Later!"
-        });
-    }
-};
-
-exports.getNoteById = (res, req) => {
-
-    try{
-        const note = Note.findById({_id: req.params.id});
-        if(!note){
-            res.status(404).send({
-                message: "Error."
+        .catch(err =>{
+            res.status(500).send({
+                message: err.message || "Error occured while saving the note. Try Again Later!"
             });
-        }
-        res.send(note);
-    }
-    catch(err){
-        res.status(500).send({
-            message: err.message || "Error occured while retrieving the note. Try Again Later!"
         });
-    }
 };
 
+//not working
+exports.getNoteById = (res, req) => {
+    const id = req.query.user_id;
+
+    Note
+        .findById(id)
+        .then(data => {
+            if (!data)
+                res.status(404).send({
+                    message: "No notes attached to user."
+                });
+            else{
+                res.send(data);
+            } 
+        })
+        .catch(err => {
+            res.status(500).send({
+                    message: err.message || "Error when retrieving note from Database."
+                });
+        });
+};
+
+//not working
 exports.deleteNote = (res, req) => {
 
     try{

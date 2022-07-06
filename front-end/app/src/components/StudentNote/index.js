@@ -1,29 +1,18 @@
-import Loader from "react-loaders"
-import Navbar from "../Navbar"
-import { useEffect, useState } from 'react'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faTrashAlt } from '@fortawesome/free-solid-svg-icons'
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "./index.css";
-
+import Navbar from '../Navbar'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTrashCan } from '@fortawesome/free-solid-svg-icons'
 
 const StudentNote = () => {
 
-    const [noteList, setNotes] = useState("");
-
-    // const notess = ()=>{
-    //     const nnoo="Hello";
-    //     setNotes(nnoo);
-    // };
-
-    // useEffect(() => {
-    //     notess();}, [setNotes]);
+    const [noteList, setNotes] = useState([]);
 
     return (
         <>
-            <Navbar />
-
-            <div className="Home">
+        <Navbar />
+        <div className="Home">
             <h1 className="HomeNotes">Notes</h1>
 
             <Link to="/create">
@@ -40,12 +29,13 @@ const StudentNote = () => {
                         {" "}
                         {noteList.map((note) => (
                             <div className="Note">
+                                    {note.title}
                                 <div className="NoteContent">
                                     {note.content}
                                 </div>
                                 <Link to={`/deletetask/${note._id}`}>
                                     <span className="DelIcon">
-                                        <FontAwesomeIcon icon={faTrashAlt} />
+                                        <FontAwesomeIcon icon={faTrashCan} />
                                     </span>
                                 </Link>
                             </div>
@@ -54,9 +44,8 @@ const StudentNote = () => {
                 )}
             </div>
         </div>
-        < Loader type = "line-scale" />
-    </>
+        </>
     )
 }
 
-export default StudentNote
+export default StudentNote;

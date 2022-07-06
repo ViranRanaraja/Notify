@@ -26,7 +26,11 @@ var UserSchema = new Schema({
     status: Boolean,
     password: String,
     accountType: String,
-    loginattempts: Number
+    loginattempts: Number,
+    Notes: [{
+        type:Schema.Types.ObjectId, 
+        ref:'Notes'
+    }],
 });
 
 UserSchema.virtual("notes",{

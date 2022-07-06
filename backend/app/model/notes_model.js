@@ -18,13 +18,15 @@ var NoteSchema = new Schema({
     },
 
     user_id: {
-        type: String,
-        required: true
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'user'
     }
-},
-{
-    timestamps: true,
-    toJSON: {virtuals: true},
+},);
+
+NoteSchema.method("toJSON", function() {
+    const { __v, _id, ...object } = this.toObject();
+    object.id = _id;
+    return object;
 });
 
 module.exports = mongoose.model('Notes', NoteSchema)
