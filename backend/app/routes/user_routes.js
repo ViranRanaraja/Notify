@@ -8,7 +8,9 @@ module.exports = app => {
     router.put("/editUser", users.editUser);
     router.put("/updateAttempts", users.updateAttempts);
     router.delete("/deleteUser", users.deleteUser);
+    router.get("/userListAll", users.UserListAll);
     router.post("/logout", users.logout);
+    
 
     app.use("/user", router);
 };

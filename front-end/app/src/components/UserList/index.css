@@ -70,3 +70,48 @@
     color: rgb(255, 217, 0);
 }
 
+.Users {
+    min-height: 60vh;
+    color: rgb(255, 217, 0);
+    padding: 20px 120px;
+    padding-bottom: 154px;
+}
+
+.UsersTitle {
+    font-weight: lighter;
+    cursor: default;
+}
+
+.Userslist {
+    padding-top: 0px;
+}
+
+.NoUserFound {
+    font-size: 2.5vh;
+    padding-left: 40px;
+    font-weight: 100;
+    color: rgb(192, 200, 207);
+}
+
+.User {
+    padding: 20px 0px;
+    padding-left: 30px;
+    font-size: 18px;
+    border-radius: 8px;
+    display: grid;
+    grid: 0.5rem;
+    grid-template-columns: repeat(3, 1fr);
+    justify-content: space-between;
+}
+
+.UserContent {
+    cursor: default;
+}
+
+.User:hover {
+    box-shadow: 1px 1px 20px rgb(0, 0, 0);
+}
+
+p{
+    color: white;
+}

@@ -60,9 +60,6 @@ exports.adminLogin = (req,res) => {
                     });
                 }
                 else{
-                    // res.send({
-                    //     message: "Admin: Successfully logged in."
-                    // })
                     res.send(data);
                 }  
             }
@@ -99,9 +96,6 @@ exports.studentLogin = (req,res) => {
                     });
                 }
                 else{
-                    // res.send({
-                    //     message: "Student: Successfully logged in."
-                    // })
                     res.send(data);
                 }  
             }
@@ -183,6 +177,26 @@ exports.deleteUser = (req, res) => {
         .catch(err => {
             res.status(500).send({
                 message: "Could not delete User with id=" + id + ". Try Again Later!"
+            });
+        });
+};
+
+exports.UserListAll = (req, res) => {
+    User
+        .find()
+        .then(data => {
+            if (!data) {
+                res.status(404).send({
+                    message: "Cannot Retrieve User Details."
+                });
+            }
+            else{
+                res.send(data);
+            }
+        })
+        .catch(err => {
+            res.status(500).send({
+                message: err.message || "Error ocurred while retrieving data. Try Again Later!"
             });
         });
 };

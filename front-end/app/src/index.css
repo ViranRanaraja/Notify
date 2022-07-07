@@ -2,8 +2,7 @@ body {
   margin: 0;
   font-family: 'Helvetica Nue', 'sans-serif';
   color: #fff;
-  background: #262626;
-  overflow: hidden;
+  background: #262626;;
   display: block;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;

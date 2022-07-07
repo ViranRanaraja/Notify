@@ -47,6 +47,7 @@ const CreateUser = () => {
         axios(config)
         .then(function () {
             alert("Account Successfully Created");
+            navigate("../")
         })
         .catch(function (error) {
             console.log(error);
