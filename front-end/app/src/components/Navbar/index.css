@@ -38,6 +38,7 @@ h1{
     font-weight: bold;
     cursor: pointer;
     transition: all 0.4s;
+    text-align: center;
 }
 
 .sign-out:hover {
@@ -58,6 +59,7 @@ h1{
     font-weight: bold;
     cursor: pointer;
     transition: all 0.4s;
+    text-align: center;
 }
 
 .delete:hover {

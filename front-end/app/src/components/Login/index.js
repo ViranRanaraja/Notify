@@ -42,7 +42,6 @@ const Login = () => {
 
         axios(config)
         .then(function (response) {
-            id = response.data[0]._id;
             const userId = response.data[0]._id;
             localStorage.setItem("userId", userId)
             attempts = response.data[0].loginattempts;
@@ -79,7 +78,6 @@ const Login = () => {
 
         axios(config)
         .then(function (response) {
-            id = response.data[0]._id;
             const userId = response.data[0]._id;
             localStorage.setItem("userId", userId);
             attempts = response.data[0].loginattempts;

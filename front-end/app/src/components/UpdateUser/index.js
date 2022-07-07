@@ -119,7 +119,7 @@ const UpdateUser = () => {
                         <input type="date" name="date" ref={dob} placeholder="Date Of Birth" required/>
                     </div>
                     <div className="mobile-updateform">
-                        <input type="text" name="text" ref={mobile} placeholder="Mobile Number" />
+                        <input type="text" name="text" ref={mobile} placeholder="Mobile Number" required/>
                     </div>
 
                     <div className="button-login">

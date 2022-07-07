@@ -1,9 +1,12 @@
-import "./index.css";
-import Navbar from '../Navbar'
-import { useEffect, useState } from 'react'
+import { useRef } from 'react';
+import Navbar from '../Navbar';
+import { useEffect, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMagnifyingGlass, faUserPlus } from '@fortawesome/free-solid-svg-icons'
 import { useNavigate } from "react-router-dom";
+import Popup from '../PopUp';
+import "./index.css";
+
 
 const UserList = () => {
 
@@ -48,6 +51,14 @@ const UserList = () => {
         navigate("../CreateUser")
     }
 
+    const [popUpOpen, setpopUpOpen] = useState(false);
+
+    const handlePopUp = () => {
+        setpopUpOpen(!popUpOpen);
+    }
+
+    const userId = useRef(null);
+
     return(
         <>
         <Navbar />
@@ -66,7 +77,7 @@ const UserList = () => {
             <h1 className="UsersTitle">User List</h1>
 
             {!userList ||
-                (userList.length == 0 && (
+                (userList.length === 0 && (
                     <h2 className="NoUserFound">No Users Found in Database</h2>
                 ))}
             <div className="Userslist">
@@ -74,13 +85,25 @@ const UserList = () => {
                     <div>
                         {" "}
                         {userList.map((user) => (
-                            <div className="User">
+                            <button className="User" onClick={handlePopUp}>
                                 <div className="UserContent">
                                     <p>Full Name: {user.firstName} {user.lastName}</p>
                                     <p>Email: {user.email}</p>
                                     <p>Account Type: {user.accountType}</p> 
+                                    {popUpOpen && <Popup
+                                        content={<>
+                                            <h3>User Details</h3>
+                                            <p>User ID: {user._id}</p>
+                                            <p>Full Name: {user.firstName} {user.lastName}</p>
+                                            <p>Email: {user.email}</p>
+                                            <p>Account Type: {user.accountType}</p>
+                                            <p>Date of Birth: {user.dateOfBirth}</p>
+                                            <p>Phone Number: {user.mobile}</p>
+                                          </>}
+                                          handleClose={handlePopUp}
+                                        />}
                                 </div>
-                            </div>
+                            </button>
                         ))}{" "}
                     </div>
                 )}

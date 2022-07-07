@@ -27,6 +27,7 @@ var UserSchema = new Schema({
     password: String,
     accountType: String,
     loginattempts: Number,
+    
     Notes: [{
         type:Schema.Types.ObjectId, 
         ref:'Notes'

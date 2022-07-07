@@ -17,7 +17,7 @@ exports.createNote = (req, res) => {
         .then(data =>{
             User.findById(note.user_id, (err, user) => {
                 if(user) {
-                    user.Note.push(note);
+                    user.note.push(note);
                     user.save();
                     res.send({ message: "Note Saved"});
                 }

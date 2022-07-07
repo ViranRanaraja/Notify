@@ -94,14 +94,21 @@
 }
 
 .User {
-    padding: 20px 0px;
+    padding: 40px 0px;
     padding-left: 30px;
-    font-size: 18px;
+    font-size: 20px;
     border-radius: 8px;
-    display: grid;
-    grid: 0.5rem;
-    grid-template-columns: repeat(3, 1fr);
+    display: flex;
     justify-content: space-between;
+}
+
+button{
+    background-color: Transparent;
+    background-repeat:no-repeat;
+    text-align: left;
+    border: none;
+    cursor:pointer;
+    width: 100%;
 }
 
 .UserContent {
@@ -114,4 +121,9 @@
 
 p{
     color: white;
+}
+
+h3{
+    color: rgb(255, 217, 0);
+    font-weight: 400;
 }

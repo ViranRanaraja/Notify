@@ -1,0 +1,46 @@
+.popup-box {
+    position: fixed;
+    background: #00000050;
+    width: 100%;
+    height: 100vh;
+    top: 0;
+    left: 0;
+}
+   
+.box {
+    position: relative;
+    width: 70%;
+    margin: 0 auto;
+    height: auto;
+    max-height: 70vh;
+    margin-top: calc(100vh - 85vh - 20px);
+    background: #262626;
+    border-radius: 4px;
+    padding: 20px;
+    border: 1px solid rgb(71, 70, 70);
+    overflow: auto;
+}
+   
+.close-icon {
+    content: 'x';
+    cursor: pointer;
+    position: fixed;
+    right: calc(15% - 30px);
+    top: calc(100vh - 85vh - 33px);
+    color: rgb(0, 0, 0);
+    background: rgb(255, 217, 0);
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    line-height: 20px;
+    text-align: center;
+    border: 1px solid rgb(71, 70, 70);
+    font-size: 20px;
+}
+
+.close-icon :hover{
+    background: none;
+    border: 3px solid rgb(255, 217, 0);
+    box-shadow: 1px 1px 20px rgb(32, 32, 32);
+    color: rgb(255, 217, 0);
+}
