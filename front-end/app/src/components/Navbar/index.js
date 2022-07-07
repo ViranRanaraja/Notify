@@ -1,7 +1,7 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import AnimatedLetters from '../AnimatedLetters'
-import './index.css'
+import AnimatedLetters from '../AnimatedLetters';
+import './index.css';
 
 const NoteNav = () => {
 

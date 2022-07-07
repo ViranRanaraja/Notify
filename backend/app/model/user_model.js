@@ -33,12 +33,6 @@ var UserSchema = new Schema({
     }],
 });
 
-UserSchema.virtual("notes",{
-    ref: "note",
-    localField: "_id",
-    foreignField: "owner",
-});
-
 UserSchema.method("toJSON", function(){
     const { __v, id, ...object } = this.toObject();
     object.id = id;

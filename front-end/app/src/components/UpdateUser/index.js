@@ -1,10 +1,10 @@
 import React, { useRef } from "react"
 import { useEffect, useState } from 'react'
-import { Link } from "react-router-dom";
 import AnimatedLetters from '../AnimatedLetters'
-import Loader from "react-loaders"
 import './index.css'
 import { useNavigate } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEye } from "@fortawesome/free-solid-svg-icons";
 
 
 const UpdateUser = () => {
@@ -52,13 +52,13 @@ const UpdateUser = () => {
         
         event.preventDefault();
         
-        if (password === confirmpassword){
+        // if (password == confirmpassword){
             console.log("mygod");
             getUpdate();
-        }
-        else{
-            alert("Password do not match.");
-        }
+        // }
+        // else{
+        //     alert("Password do not match.");
+        // }
     };
 
     const [letterClass, setLetterClass] = useState('text-animate')
@@ -67,10 +67,15 @@ const UpdateUser = () => {
         setTimeout(() => {
           setLetterClass('text-animate-hover')
         }, 3000)
-      }, []);
+    }, []);
+
+    const [passwordShown, setPasswordShown] = useState(false);
+    
+    const togglePassword = () => {
+        setPasswordShown(!passwordShown);
+    }
 
     return(
-        <>
         <div className='update'>
             <h1>
                 <AnimatedLetters letterClass={letterClass} strArray={['N','o','t','i','f','y']} 
@@ -78,7 +83,7 @@ const UpdateUser = () => {
                 />
             </h1>
             <div className='update-form'>
-                <form method="post">
+                <form method="post" onSubmit={handleUpdate}>
                     <div className="fname-updateform">
                         <input type="text" name="text" ref={fname} placeholder="First Name" required/>
                     </div>
@@ -86,10 +91,12 @@ const UpdateUser = () => {
                         <input type="text" name="text" ref={lname} placeholder="Last Name" required/>
                     </div>
                     <div className="password-updateform">
-                        <input type="password" name="password" ref={password} placeholder="Change Password" required/>
+                    <input type={passwordShown ? "text" : "password"} name="password" ref={password} placeholder="Change Password" required />
+                        <button onClick={togglePassword} className="password"><FontAwesomeIcon className="showIcon" icon={faEye}/></button>
                     </div>
                     <div className="confirm-password-updateform">
-                        <input type="password" name="confirm-password" ref={confirmpassword} placeholder="Confirm Password" required/>
+                        <input type={passwordShown ? "text" : "password"} name="confirm-password" ref={confirmpassword} placeholder="Confirm Password" required/>
+                        <button onClick={togglePassword} className="password"><FontAwesomeIcon className="showIcon" icon={faEye}/></button>
                     </div>
                     <div className="dob-updateform">
                         <input type="date" name="date" ref={dob} placeholder="Date Of Birth" required/>
@@ -99,14 +106,11 @@ const UpdateUser = () => {
                     </div>
 
                     <div className="button-login">
-                        <button className="button" onClick={handleUpdate}>Update Details</button>
+                        <button className="button">Update Details</button>
                     </div>
                 </form>
              </div>
         </div>
-
-        <Loader type="line-scale" />
-        </>
     )
 }
 

@@ -5,6 +5,7 @@ import StudentNote from './components/StudentNote';
 import UserList from './components/UserList';
 import Navbar from './components/Navbar';
 import UpdateUser from './components/UpdateUser';
+import CreateUser from './components/CreateUser';
 
 function App() {
   return (
@@ -16,7 +17,7 @@ function App() {
       <Route path='userList' element = {<UserList />} />
       <Route path='navbar' element = {<Navbar />} />
       <Route path='updateuser' element = {<UpdateUser />} />
-
+      <Route path='createuser' element = {<CreateUser />} />
 
       
     </Routes>

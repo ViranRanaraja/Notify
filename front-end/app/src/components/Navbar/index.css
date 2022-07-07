@@ -11,10 +11,11 @@
 .nav-title {
     text-decoration: none;
     color: rgb(255, 217, 0);
+    padding-left: 25px;
 }
 
 h1{
-    margin-left: 500px;
+    margin-left: 50px;
     font-weight: lighter;
     font-size: 30px;
     cursor: pointer;

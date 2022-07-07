@@ -3,6 +3,10 @@ import { useEffect, useState } from 'react'
 import AnimatedLetters from '../AnimatedLetters'
 import { useNavigate } from "react-router-dom";
 import './index.css'
+import validator from 'validator'
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEye } from "@fortawesome/free-solid-svg-icons";
+
 
 const Login = () => {
 
@@ -125,13 +129,31 @@ const Login = () => {
         }
     }
 
+    const [emailError, setEmailError] = useState('')
+
+    const validateEmail = (error) => {
+        var email = error.target.value
+      
+        if (validator.isEmail(email)) {
+          setEmailError('Email is Valid!')
+        } else {
+          setEmailError('Email is not Valid! Enter valid Email.')
+        }
+      }
+
     const [letterClass, setLetterClass] = useState('text-animate')
     
     useEffect(() => {
         setTimeout(() => {
           setLetterClass('text-animate-hover')
         }, 3000)
-      }, []);
+    }, []);
+
+    const [passwordShown, setPasswordShown] = useState(false);
+    
+    const togglePassword = () => {
+        setPasswordShown(!passwordShown);
+    }
 
     return(
         <div className='login'>
@@ -141,12 +163,16 @@ const Login = () => {
                 />
             </h1>
             <div className='login-form'>
-                <form method="post">
+                <form method="post" onSubmit={handleLogin}>
                     <div className="email-loginform">
-                        <input type="text" name="email" ref={email} placeholder="Email" required/>
+                        <input type="email" name="email" ref={email} onChange={(error) => validateEmail(error)} placeholder="Email" required/>
+                        <div className="validate-error">
+                            {emailError}
+                        </div>
                     </div>
                     <div className="password-loginform">
-                        <input type="password" name="password" ref={password} placeholder="Password" required/>
+                        <input type={passwordShown ? "text" : "password"} name="password" ref={password} placeholder="Password" required />
+                        <button onClick={togglePassword} className="password"><FontAwesomeIcon className="showIcon" icon={faEye}/></button> 
                     </div>
                     <div className="drop-down-loginform">
                         <select value={account} onChange={handleChange}>
@@ -155,7 +181,7 @@ const Login = () => {
                         </select>
                     </div>
                     <div className="button-login">
-                        <button className="button" onClick={handleLogin}>Login</button>
+                        <button className="button">Login</button>
                     </div>
                 </form>
              </div>
