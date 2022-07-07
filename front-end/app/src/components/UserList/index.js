@@ -8,6 +8,8 @@ import Popup from '../PopUp';
 import "./index.css";
 
 
+var currentUser;
+
 const UserList = () => {
 
     const navigate = useNavigate();
@@ -53,7 +55,10 @@ const UserList = () => {
 
     const [popUpOpen, setpopUpOpen] = useState(false);
 
-    const handlePopUp = () => {
+    
+
+    const handlePopUp = (user) => {
+        currentUser = user;
         setpopUpOpen(!popUpOpen);
     }
 
@@ -85,20 +90,20 @@ const UserList = () => {
                     <div>
                         {" "}
                         {userList.map((user) => (
-                            <button className="User" onClick={handlePopUp}>
+                            <button className="User" onClick={() => handlePopUp(user)}>
                                 <div className="UserContent">
                                     <p>Full Name: {user.firstName} {user.lastName}</p>
                                     <p>Email: {user.email}</p>
-                                    <p>Account Type: {user.accountType}</p> 
+                                    <p>Account Type: {user.accountType}</p>
                                     {popUpOpen && <Popup
                                         content={<>
                                             <h3>User Details</h3>
-                                            <p>User ID: {user._id}</p>
-                                            <p>Full Name: {user.firstName} {user.lastName}</p>
-                                            <p>Email: {user.email}</p>
-                                            <p>Account Type: {user.accountType}</p>
-                                            <p>Date of Birth: {user.dateOfBirth}</p>
-                                            <p>Phone Number: {user.mobile}</p>
+                                            <p>User ID: {currentUser._id}</p>
+                                            <p>Full Name: {currentUser.firstName} {currentUser.lastName}</p>
+                                            <p>Email: {currentUser.email}</p>
+                                            <p>Account Type: {currentUser.accountType}</p>
+                                            <p>Date of Birth: {currentUser.dateOfBirth}</p>
+                                            <p>Phone Number: {currentUser.mobile}</p>
                                           </>}
                                           handleClose={handlePopUp}
                                         />}

@@ -16,5 +16,3 @@ Notify has been implemented using the following frameworks.
 * Express
 * React.js
 * Node.js
-
-**Project Link**: 
