@@ -21,6 +21,11 @@
 	background-color: none;
 	width: 100%;
 }
+.search-icon{
+    height: 20px;
+    width: 20px;
+    padding-left: 5px;
+}
 
 .search input:focus {
 	outline: none;

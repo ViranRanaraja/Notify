@@ -11,6 +11,9 @@ const UpdateUser = () => {
 
     const navigate = useNavigate();
 
+    const [pass, setPass] = useState('');
+    const [confirmpass, setConfirmPass] = useState('');
+
     const fname = useRef(null);
     const lname = useRef(null);
     const password = useRef(null);
@@ -41,24 +44,32 @@ const UpdateUser = () => {
             axios(config)
             .then(function () {
                 alert("Details successfully updated.")
-                navigate("../Login");
+                navigate("../");
             })
-            .catch(function (error) {
+            .catch(function () {
                 alert("An Error occurred when updating user details.")
             });
     }
 
+    const handlepassword = () =>{
+        setPass(password);
+    };
+
+    const handleconfirmpassword = () =>{
+        setConfirmPass(confirmpassword);
+    };
+    
     const handleUpdate = (event) => {
-        
         event.preventDefault();
         
-        // if (password == confirmpassword){
-            console.log("mygod");
+        if (pass.current.value === confirmpass.current.value){
             getUpdate();
-        // }
-        // else{
-        //     alert("Password do not match.");
-        // }
+            event.target.reset();
+        }
+        else{
+            alert("Password do not match.");
+        }
+        
     };
 
     const [letterClass, setLetterClass] = useState('text-animate')
@@ -73,6 +84,12 @@ const UpdateUser = () => {
     
     const togglePassword = () => {
         setPasswordShown(!passwordShown);
+    }
+
+    const [passwordShown2, setPasswordShown2] = useState(false);
+    
+    const togglePassword2 = () => {
+        setPasswordShown2(!passwordShown2);
     }
 
     return(
@@ -91,12 +108,12 @@ const UpdateUser = () => {
                         <input type="text" name="text" ref={lname} placeholder="Last Name" required/>
                     </div>
                     <div className="password-updateform">
-                    <input type={passwordShown ? "text" : "password"} name="password" ref={password} placeholder="Change Password" required />
+                    <input type={passwordShown ? "text" : "password"} id="passwordname" ref={password} placeholder="Change Password" onChange={handlepassword} required />
                         <button onClick={togglePassword} className="password"><FontAwesomeIcon className="showIcon" icon={faEye}/></button>
                     </div>
                     <div className="confirm-password-updateform">
-                        <input type={passwordShown ? "text" : "password"} name="confirm-password" ref={confirmpassword} placeholder="Confirm Password" required/>
-                        <button onClick={togglePassword} className="password"><FontAwesomeIcon className="showIcon" icon={faEye}/></button>
+                        <input type={passwordShown2 ? "text" : "password"} id="confpassword" ref={confirmpassword} placeholder="Confirm Password" onChange={handleconfirmpassword} required/>
+                        <button onClick={togglePassword2} className="password"><FontAwesomeIcon className="showIcon" icon={faEye}/></button>
                     </div>
                     <div className="dob-updateform">
                         <input type="date" name="date" ref={dob} placeholder="Date Of Birth" required/>

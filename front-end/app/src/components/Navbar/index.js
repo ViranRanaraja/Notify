@@ -16,13 +16,13 @@ const NoteNav = () => {
 
             var config = {
             method: 'delete',
-            url: 'localhost:8080/user/deleteUser?id=' + userId,
+            url: 'http://localhost:8080/user/deleteUser?id=' + userId,
             headers: { }
             };
 
             axios(config)
             .then(function (response) {
-                navigate("../Login");
+                navigate("../");
             })
             .catch(function (error) {
             console.log(error);

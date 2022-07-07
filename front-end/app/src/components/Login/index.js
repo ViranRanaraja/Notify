@@ -117,15 +117,19 @@ const Login = () => {
         })
         .catch(function () {
         });
-
+        
     }
     const handleLogin = (event) =>{
         event.preventDefault();
         if(account === "Admin") {
             getAdminLogin();
+            event.target.reset();
+            setEmailError('');
         }
         if(account === "Student"){
             getStudentLogin();
+            event.target.reset();
+            setEmailError('');
         }
     }
 

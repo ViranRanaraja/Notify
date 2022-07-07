@@ -51,7 +51,8 @@ const CreateUser = () => {
         .catch(function (error) {
             console.log(error);
         });
-
+        event.target.reset();
+        setEmailError('');
     }
 
     const handleBack = () => {

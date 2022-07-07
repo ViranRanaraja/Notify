@@ -1,6 +1,8 @@
 const Note = require("../model/notes_model");
-const User = require("../model/user_model")
+const User = require("../model/user_model");
 
+
+//not working
 exports.createNote = (req, res) => {
 
     //Creating Note

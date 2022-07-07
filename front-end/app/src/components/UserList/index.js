@@ -24,8 +24,8 @@ const UserList = () => {
         <Navbar />
         <div className="search-bar">
             <div className='search'>
-                <FontAwesomeIcon icon={faMagnifyingGlass} className='search-icon' size='1.3em' />
-                <input onChange={handleSearchNote} type='text' placeholder='Type To Search...'/>
+                <FontAwesomeIcon icon={faMagnifyingGlass} className='search-icon' />
+                <input onChange={handleSearchNote} type='text' placeholder='Type Name of User To Search for User in List'/>
             </div>
             <div className="hover-btn">
                 <button className="user-add-btn" onClick={handleUser} >
