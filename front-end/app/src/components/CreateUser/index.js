@@ -6,6 +6,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import { faEye } from "@fortawesome/free-solid-svg-icons";
 import validator from 'validator';
+import emailjs from '@emailjs/browser'
 import './index.css';
 
 
@@ -19,13 +20,33 @@ const CreateUser = () => {
     const lname = useRef(null);
     const email = useRef(null);
     const password = useRef(null);
+    const refForm = useRef();
 
     const handleChange = (event) => {
         setaccount(event.target.value)
     }
 
+    function sendEmail(){
+        emailjs
+            .sendForm(
+                `${process.env.REACT_APP_SERVICE_TOKEN}`,
+                `${process.env.REACT_APP_TEMPLATE_TOKEN}`,
+                refForm.current,
+                `${process.env.REACT_APP_PUBLIC_TOKEN}`
+            )
+            .then(
+                () => {
+                    alert('Email sent to User!')
+                },
+                () => {
+                    alert('Falied to send email, Please try again!')
+                }
+            );
+    }
+
     const handleCreate = (event) => {
         event.preventDefault();
+        sendEmail();
         var axios = require('axios');
         var data = JSON.stringify({
             "firstName": fname?.current?.value,
@@ -50,7 +71,9 @@ const CreateUser = () => {
             navigate("../")
         })
         .catch(function (error) {
-            console.log(error);
+            if(error.response.status === 500){
+                alert("Email Address is already in use. Try a different Email Address.");
+            }
         });
         event.target.reset();
         setEmailError('');
@@ -99,7 +122,7 @@ const CreateUser = () => {
                 </button>
             </div>
             <div className='create-form'>
-                <form method="post" onSubmit={handleCreate}>
+                <form method="post" ref={refForm} onSubmit={handleCreate}>
                     <div className="fname-createform">
                         <input type="text" name="fname" ref={fname} placeholder="First Name" />
                     </div>
@@ -117,13 +140,13 @@ const CreateUser = () => {
                         <button onClick={togglePassword} className="password"><FontAwesomeIcon className="showIcon" icon={faEye}/></button>
                     </div>
                     <div className="drop-down-createform">
-                        <select value={account} onChange={handleChange}>
+                        <select value={account} name="accountType" onChange={handleChange}>
                             <option value="Admin">Admin</option>
                             <option value="Student">Student</option>
                         </select>
                     </div>
                     <div className="button-create">
-                        <button className="button" /*onClick={handleEmail}*/ >Send Email</button>
+                        <button className="button">Send Email</button>
                     </div>
                 </form>
              </div>

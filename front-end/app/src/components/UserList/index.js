@@ -1,4 +1,3 @@
-import { useRef } from 'react';
 import Navbar from '../Navbar';
 import { useEffect, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -61,8 +60,6 @@ const UserList = () => {
         currentUser = user;
         setpopUpOpen(!popUpOpen);
     }
-
-    const userId = useRef(null);
 
     return(
         <>

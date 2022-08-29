@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "./index.css";
 import Navbar from '../Navbar'
@@ -20,7 +20,7 @@ const StudentNote = () => {
             </Link>
 
             {!noteList ||
-                (noteList.length == 0 && (
+                (noteList.length === 0 && (
                     <h2 className="NoNotesFound">No Notes Found</h2>
                 ))}
             <div className="NoteList">

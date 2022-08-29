@@ -18,5 +18,15 @@
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
+
+    <!--EmailJS-->
+    <script type="text/javascript"
+        src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js">
+    </script>
+    <script type="text/javascript">
+      (function(){
+          emailjs.init(`${process.env.REACT_APP_PUBLIC_TOKEN}`);
+      })();
+    </script>
   </body>
 </html>

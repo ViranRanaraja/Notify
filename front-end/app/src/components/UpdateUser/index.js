@@ -24,31 +24,31 @@ const UpdateUser = () => {
 
     function getUpdate(){
         var axios = require('axios');
-            var data = JSON.stringify({
-                "firstName": fname?.current?.value,
-                "lastName": lname?.current?.value,
-                "password": confirmpassword?.current?.value,
-                "dateOfBirth": dob?.current?.value,
-                "mobile": mobile?.current?.value,
-            });
+        var data = JSON.stringify({
+            "firstName": fname?.current?.value,
+            "lastName": lname?.current?.value,
+            "password": confirmpassword?.current?.value,
+            "dateOfBirth": dob?.current?.value,
+            "mobile": mobile?.current?.value,
+        });
 
-            var config = {
-            method: 'put',
-            url: 'http://localhost:8080/user/editUser?id=' + userId,
-            headers: { 
-                'Content-Type': 'application/json'
-            },
-            data : data
-            };
+        var config = {
+        method: 'put',
+        url: 'http://localhost:8080/user/editUser?id=' + userId,
+        headers: { 
+            'Content-Type': 'application/json'
+        },
+        data : data
+        };
 
-            axios(config)
-            .then(function () {
-                alert("Details successfully updated.")
-                navigate("../");
-            })
-            .catch(function () {
-                alert("An Error occurred when updating user details.")
-            });
+        axios(config)
+        .then(function () {
+            alert("Details successfully updated.")
+            navigate("../");
+        })
+        .catch(function () {
+            alert("An Error occurred when updating user details.")
+        });
     }
 
     const handlepassword = () =>{
